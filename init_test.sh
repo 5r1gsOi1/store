@@ -98,7 +98,7 @@ perform_admin_work()
     RESULT="${RESULT}deb ${MIRROR_ADDRESS} testing main\n"
     RESULT="${RESULT}deb-src ${MIRROR_ADDRESS} testing main\n\n"
 
-    RESULT="${RESULT}ddeb http://deb.debian.org/debian-security/ testing-security main contrib non-free\n"
+    RESULT="${RESULT}deb http://deb.debian.org/debian-security/ testing-security main contrib non-free\n"
     RESULT="${RESULT}deb-src http://deb.debian.org/debian-security/ testing-security main contrib non-free\n\n"
 
     RESULT="${RESULT}deb ${MIRROR_ADDRESS} testing-updates main contrib non-free\n"
