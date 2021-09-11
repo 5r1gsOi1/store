@@ -65,6 +65,9 @@ perform_admin_work()
   PREF_DIR="${APT_DIR}/preferences.d"
   SOURCES_DIR="${APT_DIR}/sources.list.d"
 
+  [ -d "${PREF_DIR}" ] && rm -r "${PREF_DIR}"
+  [ -d "${SOURCES_DIR}" ] && rm -r "${SOURCES_DIR}"
+
   mkdir ${PREF_DIR}
 
   echo -e "# 500 <= P < 990: causes a version to be installed unless there is a\n# version available belonging to the target release or the installed\n# version is more recent\n\nPackage: *\nPin: release a=stable\nPin-Priority: 900" > ${PREF_DIR}/stable.pref
