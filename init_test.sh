@@ -50,7 +50,7 @@ perform_admin_work()
 
   export DEBIAN_FRONTEND=noninteractive
   apt update 
-  apt install -yq aptitude update-alternatives
+  apt install -yq aptitude # update-alternatives is included in core system
 
   ################################################################################
   #
@@ -59,7 +59,7 @@ perform_admin_work()
   #
   ################################################################################
 
-  MIRROR_ADDRESS="http://mirror.corbina.net/debian/"
+  MIRROR_ADDRESS="http://ftp.ru.debian.org/debian/"
   APT_DIR="/etc/apt"
 
   PREF_DIR="${APT_DIR}/preferences.d"
@@ -78,11 +78,11 @@ perform_admin_work()
   create_sources_for_stable()
   {
     RESULT=""
-    RESULT="${RESULT}deb ${MIRROR_ADDRESS} stable main\n"
-    RESULT="${RESULT}deb-src ${MIRROR_ADDRESS} stable main\n\n"
+    RESULT="${RESULT}deb ${MIRROR_ADDRESS} stable main contrib non-free\n"
+    RESULT="${RESULT}deb-src ${MIRROR_ADDRESS} stable main contrib non-free\n\n"
 
-    RESULT="${RESULT}deb http://security.debian.org/debian-security stable/updates main\n"
-    RESULT="${RESULT}deb-src http://security.debian.org/debian-security stable/updates main\n\n"
+    RESULT="${RESULT}deb http://deb.debian.org/debian-security/ stable-security main\n"
+    RESULT="${RESULT}deb-src http://deb.debian.org/debian-security/ stable-security main\n\n"
 
     RESULT="${RESULT}deb ${MIRROR_ADDRESS} stable-updates main\n"
     RESULT="${RESULT}deb-src ${MIRROR_ADDRESS} stable-updates main\n"
@@ -95,27 +95,27 @@ perform_admin_work()
     RESULT="${RESULT}deb ${MIRROR_ADDRESS} testing main\n"
     RESULT="${RESULT}deb-src ${MIRROR_ADDRESS} testing main\n\n"
 
-    RESULT="${RESULT}deb http://security.debian.org/debian-security testing-security/updates main\n"
-    RESULT="${RESULT}deb-src http://security.debian.org/debian-security testing-security/updates main\n\n"
+    RESULT="${RESULT}ddeb http://deb.debian.org/debian-security/ testing-security main contrib non-free\n"
+    RESULT="${RESULT}deb-src http://deb.debian.org/debian-security/ testing-security main contrib non-free\n\n"
 
-    RESULT="${RESULT}deb ${MIRROR_ADDRESS} testing-updates main\n"
-    RESULT="${RESULT}deb-src ${MIRROR_ADDRESS} testing-updates main\n"
+    RESULT="${RESULT}deb ${MIRROR_ADDRESS} testing-updates main contrib non-free\n"
+    RESULT="${RESULT}deb-src ${MIRROR_ADDRESS} testing-updates main contrib non-free\n"
     SOURCES=${RESULT}
   }
 
   create_sources_for_unstable()
   {
     RESULT=""
-    RESULT="${RESULT}deb ${MIRROR_ADDRESS} unstable main\n"
-    RESULT="${RESULT}deb-src ${MIRROR_ADDRESS} unstable main\n\n"
+    RESULT="${RESULT}deb ${MIRROR_ADDRESS} unstable main contrib non-free\n"
+    RESULT="${RESULT}deb-src ${MIRROR_ADDRESS} unstable main contrib non-free\n\n"
     SOURCES=${RESULT}
   }
 
   create_sources_for_experimental()
   {
     RESULT=""
-    RESULT="${RESULT}deb ${MIRROR_ADDRESS} experimental main\n"
-    RESULT="${RESULT}deb-src ${MIRROR_ADDRESS} experimental main\n\n"
+    RESULT="${RESULT}deb ${MIRROR_ADDRESS} experimental main contrib non-free\n"
+    RESULT="${RESULT}deb-src ${MIRROR_ADDRESS} experimental main contrib non-free\n\n"
     SOURCES=${RESULT}
   }
 
